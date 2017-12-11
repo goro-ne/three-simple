@@ -1,8 +1,7 @@
-=============================
-Install
-=============================
 
-参考サイト
+# Install  
+
+参考サイト  
 https://tyablog.net/2017/03/29/typescript-three-js/
 
 ### npmのバージョン確認
@@ -200,4 +199,16 @@ $ npm run build
 
 ```
 npm run test
+```
+
+
+### gitignore
+
+.gitignore
+```
+.DS_Store
+npm-debug.log
+node_modules
+
+tmp
 ```
