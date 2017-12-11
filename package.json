@@ -1,0 +1,35 @@
+{
+  "name": "three-simple",
+  "version": "1.0.0",
+  "description": "test three.js",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "webpack",
+    "test": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goroutine/three-simple.git"
+  },
+  "author": "goroutine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goroutine/three-simple/issues"
+  },
+  "homepage": "https://github.com/goroutine/three-simple#readme",
+  "dependencies": {
+    "@types/jquery": "^3.2.16",
+    "jquery": "^3.2.1",
+    "three": "^0.88.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.84.35",
+    "http-server": "^0.10.0",
+    "ts-loader": "^3.2.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
+  }
+}
