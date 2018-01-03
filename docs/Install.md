@@ -11,7 +11,7 @@ $ npm --version
 ### 方針
 
 - ES2015、Three.jsを使い、WebGLで3Dモデルをアニメーションさせる。
-- ES2015で動作しないブラウザを考慮して、webpack3でES5にコンパイルする。
+- ES2015で動作しないブラウザを考慮して、babelとwebpack3でES5にコンパイルする。
 
 ### ES2015のブラウザ対応状況
 
@@ -41,22 +41,22 @@ project /
 ### npmパッケージ初期化
 
 ```
-npm init -y
+$ npm init -y
 ```
 
 
 ### webpackのインストール
 
 ```
-npm install webpack -g
-npm install webpack --save-dev
+$ npm install webpack -g
+$ npm install webpack --save-dev
 + webpac@1.0.1
 ```
 
 ### babelのインストール
 
 ```
-npm install babel-loader babel-core babel-preset-es2015 --save-dev
+$ npm install babel-loader babel-core babel-preset-es2015 --save-dev
 + babel-preset-es2015@6.24.1
 + babel-loader@7.1.2
 + babel-core@6.26.0
@@ -65,7 +65,7 @@ npm install babel-loader babel-core babel-preset-es2015 --save-dev
 ### three.jsのインストール
 
 ```
-npm install --save three
+$ npm install --save three
 + three@0.88.0
 ```
 
@@ -116,91 +116,6 @@ module.exports = {
   }
 }
 ```
-
-
-### webpackでコンパイルテスト
-
-```
-$ webpack --display-error-details
-Hash: 86fa21527e0727984458
-Version: webpack 3.10.0
-Time: 414ms
-      Asset     Size  Chunks             Chunk Names
-./js/app.js  3.03 kB       0  [emitted]  js
-   [0] ./js/entry.js 376 bytes {0} [built]
-   [1] ./js/print.js 74 bytes {0} [built]
-```
-
-### package.jsonの編集
-
-npmコマンドを追加
->- npm run test
->- npm run build
-
-*package.json*
-```json
-{
-  "name": "three-simple",
-  "version": "1.0.0",
-  "description": "test three.js",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "scripts": {
-    "build": "webpack",
-    "test": "http-server"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/goroutine/three-simple.git"
-  },
-  "author": "goroutine",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/goroutine/three-simple/issues"
-  },
-  "homepage": "https://github.com/goroutine/three-simple#readme",
-  "dependencies": {
-    "@types/jquery": "^3.2.16",
-    "jquery": "^3.2.1",
-    "three": "^0.88.0"
-  },
-  "devDependencies": {
-    "@types/three": "^0.84.35",
-    "http-server": "^0.10.0",
-    "ts-loader": "^3.2.0",
-    "typescript": "^2.6.2",
-    "webpack": "^3.10.0"
-  }
-}
-```
-
-### index.html
-
-*index.html*
-```html
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>
-        body {
-            margin: 0px;
-            overflow: hidden;
-        }
-    </style>
-    <title></title>
-</head>
-<body>
-    <script src="assets/bundle.js"></script>
-</body>
-</html>
-```
-
-
 ### app.js
 
 *app.js*
@@ -327,6 +242,91 @@ function render() {
 
 }
 ```
+
+
+### webpackでコンパイルテスト
+
+```
+$ webpack --display-error-details
+Hash: 86fa21527e0727984458
+Version: webpack 3.10.0
+Time: 414ms
+      Asset     Size  Chunks             Chunk Names
+./js/app.js  3.03 kB       0  [emitted]  js
+   [0] ./js/entry.js 376 bytes {0} [built]
+   [1] ./js/print.js 74 bytes {0} [built]
+```
+
+### package.jsonの編集
+
+npmコマンドを追加
+>- npm run test
+>- npm run build
+
+*package.json*
+```json
+{
+  "name": "three-simple",
+  "version": "1.0.0",
+  "description": "test three.js",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "webpack",
+    "test": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goroutine/three-simple.git"
+  },
+  "author": "goroutine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goroutine/three-simple/issues"
+  },
+  "homepage": "https://github.com/goroutine/three-simple#readme",
+  "dependencies": {
+    "@types/jquery": "^3.2.16",
+    "jquery": "^3.2.1",
+    "three": "^0.88.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.84.35",
+    "http-server": "^0.10.0",
+    "ts-loader": "^3.2.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
+  }
+}
+```
+
+### index.html
+
+*index.html*
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            margin: 0px;
+            overflow: hidden;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+    <script src="assets/bundle.js"></script>
+</body>
+</html>
+```
+
+
 
 ### コンパイル
 
